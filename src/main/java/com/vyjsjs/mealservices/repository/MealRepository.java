@@ -10,20 +10,9 @@ import org.springframework.stereotype.Repository;
  *
  * JpaRepository<[엔티티 타입], [기본 키(ID) 타입]>
  */
-<<<<<<< Updated upstream
-@Repository
+@Repository // 이 인터페이스가 Spring의 Repository 계층임을 명시
 public interface MealRepository extends JpaRepository<Meal, Long> {
 
     // Spring Data JPA의 쿼리 메서드를 통해 추가적인 조회 기능을 정의할 수 있습니다.
-    // 예: List<Meal> findByMealDate(LocalDate mealDate);  // 날짜로 식사 기록 조회
+    // 예: List<Meal> findByMealDate(LocalDate mealDate); // 날짜로 식사 기록 조회
 }
-=======
-
-@Repository
-public  interface MealRepository extends JpaRepository<Meal, Long> {
-
-    // Spring Data JPA의 쿼리 메서드를 통해 추가적인 조회 기능을 정의할 수 있습니다.
-    // 예: List<Meal> findByMealDae(LocalDate mealDae);  // 날짜로 식사 기록 조회
-}
-
->>>>>>> Stashed changes
