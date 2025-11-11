@@ -23,7 +23,6 @@ public class MealService {
     private final MealRepository mealRepository;
 
     // --- C (Create) ---
-
     /**
      * 새로운 식사 기록을 등록합니다.
      */
