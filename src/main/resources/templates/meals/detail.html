@@ -2,55 +2,49 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>식단 상세 조회</title>
-    <style>
-        body { font-family: sans-serif; padding: 20px; max-width: 600px; margin: 0 auto; }
-        .card { border: 1px solid #ddd; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h2 { margin-top: 0; color: #333; }
-        .info-group { margin-bottom: 15px; }
-        .label { font-weight: bold; display: block; margin-bottom: 5px; color: #666; }
-        .value { font-size: 1.1em; }
-        .btn-group { margin-top: 20px; display: flex; gap: 10px; }
-        .btn { padding: 10px 15px; text-decoration: none; border-radius: 5px; color: white; text-align: center; }
-        .btn-back { background-color: #6c757d; }
-        .btn-edit { background-color: #007bff; }
-    </style>
+    <title>식사 상세 정보</title>
 </head>
 <body>
+<h1>🍽️ 식사 상세 정보</h1>
 
-<h1>🍽️ 식단 상세 정보</h1>
-
-<div class="card">
-    <div class="info-group">
-        <span class="label">식사 날짜</span>
-        <span class="value" th:text="${meal.mealDate}">2023-11-24</span>
-    </div>
-
-    <div class="info-group">
-        <span class="label">식사 구분</span>
-        <span class="value" th:text="${meal.mealName}">점심</span>
-    </div>
-
-    <div class="info-group">
-        <span class="label">메뉴</span>
-        <span class="value" th:text="${meal.menuDescription}">된장찌개와 고등어구이</span>
-    </div>
-
-    <div class="info-group">
-        <span class="label">칼로리</span>
-        <span class="value" th:text="${meal.calories} + ' kcal'">800 kcal</span>
-    </div>
-
-    <div class="info-group">
-        <span class="label">기록 생성일</span>
-        <span class="value" th:text="${#temporals.format(meal.createdAt, 'yyyy-MM-dd HH:mm')}">2023-11-24 12:00</span>
-    </div>
-
-    <div class="btn-group">
-        <a th:href="@{/meals}" class="btn btn-back">목록으로</a>
-        <a href="#" class="btn btn-edit">수정하기</a> <!-- 11주차 기능 -->
-    </div>
+<div>
+    <label><strong>ID:</strong></label>
+    <span th:text="${meal.id}">1</span>
+</div>
+<div>
+    <label><strong>날짜:</strong></label>
+    <span th:text="${meal.mealDate}">2023-11-27</span>
+</div>
+<div>
+    <label><strong>구분:</strong></label>
+    <span th:text="${meal.mealName}">점심</span>
+</div>
+<div>
+    <label><strong>메뉴 설명:</strong></label>
+    <p th:text="${meal.menuDescription}">닭가슴살 샐러드</p>
+</div>
+<div>
+    <label><strong>칼로리:</strong></label>
+    <span th:text="${meal.calories}">500</span> kcal
+</div>
+<div>
+    <label><strong>생성일:</strong></label>
+    <span th:text="${meal.createdAt}">2023-11-27T10:00:00</span>
 </div>
 
+<hr/>
+
+<div style="display: flex; gap: 10px;">
+    <button th:onclick="|location.href='@{/meals/{id}/edit(id=${meal.id})}'|">수정하기</button>
+
+    <form th:action="@{/meals/{id}/delete(id=${meal.id})}" method="post"
+          onsubmit="return confirm('정말 이 식사 기록을 삭제하시겠습니까?');">
+        <button type="submit" style="background-color: #ff4d4d; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+            삭제하기
+        </button>
+    </form>
+
+    <button onclick="location.href='/meals'">목록으로 돌아가기</button>
+</div>
 </body>
 </html>
