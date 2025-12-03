@@ -4,6 +4,7 @@ import com.vyjsjs.mealservices.domain.Meal;
 import com.vyjsjs.mealservices.dto.MealRequest;
 import com.vyjsjs.mealservices.dto.MealResponse;
 import com.vyjsjs.mealservices.repository.MealRepository;
+import com.vyjsjs.mealservices.exception.MealNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -48,10 +49,11 @@ public class MealService {
     /**
      * 특정 ID의 식사 기록 하나를 조회합니다.
      */
+    // 수정: 13주차 코드개선
     public MealResponse findMealById(Long id) {
         // ID로 찾고, 만약 없다면 예외를 발생시킵니다.
         Meal meal = mealRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Meal not found with id: " + id));
+                .orElseThrow(() -> new MealNotFoundException(id));  // 여기 수정됨
         return new MealResponse(meal);
     }
 
@@ -63,7 +65,7 @@ public class MealService {
     @Transactional
     public MealResponse updateMeal(Long id, MealRequest request) {
         Meal meal = mealRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Meal not found with id: " + id));
+                .orElseThrow(() -> new MealNotFoundException(id));
 
         // JPA의 @Transactional 덕분에 Repository.save()를 호출하지 않아도 변경사항 DB에 반영됩니다.
         meal.update(
