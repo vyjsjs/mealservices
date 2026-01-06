@@ -41,7 +41,10 @@ dependencies {
 	// 5. Database (H2): 개발 및 테스트용 인메모리 DB
 	runtimeOnly 'com.h2database:h2'
 
-	// 6. Test: 테스트 코드용
+	// 6. MySQL Driver 추가
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	// 7. Test: 테스트 코드용
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
