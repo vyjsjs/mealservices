@@ -39,9 +39,9 @@
 * **Server (Raspberry Pi 4):** Linux 환경에 Java와 MariaDB를 직접 설치하고, 빌드된 JAR 파일을 전송하여 구동.
 
 ## 5. 📸 실행 화면
-![1 메인화면.png](../../1%20%EB%A9%94%EC%9D%B8%ED%99%94%EB%A9%B4.png)
-![2 상세화면.png](../../2%20%EC%83%81%EC%84%B8%ED%99%94%EB%A9%B4.png)
-![3 수정화면.png](../../3%20%EC%88%98%EC%A0%95%ED%99%94%EB%A9%B4.png)
+<img width="640" height="192" alt="1 메인화면" src="https://github.com/user-attachments/assets/042e97eb-85eb-4702-ac33-e8f27d008818" />
+<img width="642" height="289" alt="2 상세화면" src="https://github.com/user-attachments/assets/113e90ae-c963-4fac-906a-51f86f0066d9" />
+<img width="329" height="203" alt="3 수정화면" src="https://github.com/user-attachments/assets/9fbc8aa5-a428-474c-b0e3-ec9aadb1e493" />
 
 ## 6. 🔥 트러블 슈팅 & 배운 점 (Retrospective)
 
