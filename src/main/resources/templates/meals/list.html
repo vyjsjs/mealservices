@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>식사 목록 (Meal List)</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+<h1>📋 나의 식사 기록</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>날짜</th>
+        <th>구분</th> <th>칼로리</th>
+        <th>상세보기</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="meal : ${meals}">
+        <td th:text="${meal.id}">1</td>
+        <td th:text="${meal.mealDate}">2023-11-27</td>
+        <td th:text="${meal.mealName}">점심</td>
+        <td th:text="${meal.calories} + ' kcal'">500 kcal</td>
+        <td>
+            <a th:href="@{/meals/{id}(id=${meal.id})}">보기</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div style="margin-bottom: 10px;">
+    <button onclick="location.href='/meals/new'">➕ 새 식사 기록하기</button>
+</div>
+
+<div th:if="${meals.isEmpty()}">
+    <p>저장된 식사 기록이 없습니다.</p>
+</div>
+
+</body>
+</html>

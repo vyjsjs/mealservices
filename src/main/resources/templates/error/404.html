@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>페이지를 찾을 수 없습니다</title>
+  <style>
+    body { text-align: center; padding: 50px; font-family: sans-serif; }
+    h1 { color: #ff6b6b; }
+    .message { font-size: 18px; color: #555; margin-bottom: 30px; }
+    button { padding: 10px 20px; cursor: pointer; }
+  </style>
+</head>
+<body>
+<h1>⚠️ 죄송합니다.</h1>
+
+<div class="message">
+  <p th:text="${errorMessage}">에러가 발생했습니다.</p>
+</div>
+
+<button onclick="location.href='/meals'">목록으로 돌아가기</button>
+</body>
+</html>

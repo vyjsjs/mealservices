@@ -9,10 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class MealservicesApplication {
+public class MealServicesApplication {
 	public static void main(String[] args){
 		// 애플리케이션 실행
-		SpringApplication.run(MealservicesApplication.class, args);
+		SpringApplication.run(MealServicesApplication.class, args);
 
 		// 서버가 정상적으로 시작되면 콘솔에 메시지가 출력됩니다.
 		System.out.println("--- Meal Services Started Successfully! ---");

@@ -1,91 +1,61 @@
-# 🍽️ Simple Meal Management Service (식단 관리 웹 서버)
+# 🥗 MealService (식단 관리 홈 서버 프로젝트)
 
-## ✨ 프로젝트 개요
+### "나만의 홈 서버에서 돌아가는 CRUD 식단 관리 서비스"
 
-| **구분** | **내용** |
-| --- | --- |
-| **프로젝트 목적** | Java Spring Boot를 활용한 **CRUD 기능** 구현을 통해 서버 개발자로서의 기본 역량 확보 및 실무 기반 다지기 |
-| **개발 기간** | 2025년 2학기 (총 15주) |
-| **주요 기능** | 사용자가 일일 식사 기록 (메뉴, 칼로리, 시간대)을 등록, 조회, 수정, 삭제하는 웹 API 및 화면 제공 |
-| **개발자** | 경희대학교 컴퓨터공학과 2학년 (서버 개발자 지망생) |
+## 1. 프로젝트 개요
+* **프로젝트명:** MealService
+* **설명:** 매일의 식사를 기록하고 관리하는 웹 애플리케이션입니다. 로컬 개발 환경을 넘어, **직접 구축한 리눅스 홈 서버(Raspberry Pi)**에 배포하여 24시간 중단 없이 서비스를 운영하는 과정을 통해 웹 개발의 전 과정(개발-DB구축-배포)을 학습했습니다.
+* **개발 기간:** 15주 (로드맵 기반 단계별 학습)
 
-## 🛠️ 기술 스택 (Tech Stack)
+## 2. ⚒️ 사용 기술 스택 (Tech Stack)
 
-프로젝트에 사용된 핵심 기술 스택 및 역할입니다.
+### Backend
+* **Java 17**
+* **Spring Boot 3.5.6**
+* **Spring Data JPA**
+* **Gradle**
 
-### 백엔드 & DB
+### Database
+* **MySQL / MariaDB** (Production - 라즈베리파이 서버)
+* **H2 Database** (Development - 로컬 테스트용)
 
-| **카테고리** | **기술** | **역할** |
-| --- | --- | --- |
-| **언어** | `Java 17` | 서버 개발 메인 언어 |
-| **프레임워크** | `Spring Boot 3.x` | 백엔드 서버 구축 및 환경 설정 자동화 |
-| **데이터 접근** | `Spring Data JPA` | 객체-관계 매핑 (ORM)을 통한 DB 연동 |
-| **데이터베이스** | `H2 Database` | 개발 및 테스트용 인메모리(In-Memory) 데이터베이스 |
-| **템플릿 엔진** | `Thymeleaf` | 서버 사이드 렌더링을 위한 View 계층 구축 |
-| **의존성 관리** | `Lombok` | Getter, Setter, 생성자 등 반복 코드 최소화 |
+### Frontend
+* **Thymeleaf** (Server-side Templating)
+* **HTML5 / CSS**
 
-### 개발 환경 & 협업
+### Infrastructure & DevOps
+* **Raspberry pi 4B** (Ubuntu Server / Linux)
+* **Git / GitHub**
 
-| **카테고리** | **도구** | **역할** |
-| --- | --- | --- |
-| **빌드 도구** | `Gradle` | 프로젝트 빌드 및 의존성 관리 |
-| **버전 관리** | `Git` / `GitHub` | 분산 버전 관리 시스템 및 원격 저장소 |
-| **문서화** | `Notion` | 주간 개발 일지 및 학습 내용 기록 |
+## 3. ✨주요 기능
+1.  **식단 기록 (Create):** 아침, 점심, 저녁 메뉴와 칼로리 정보를 기록합니다.
+2.  **식단 조회 (Read):** 저장된 식단 목록을 리스트 형태로 조회하고, 상세 내용을 확인합니다.
+3.  **식단 수정 (Update):** 잘못 입력된 메뉴나 칼로리 정보를 수정합니다.
+4.  **식단 삭제 (Delete):** 불필요한 기록을 삭제합니다.
+5.  **무중단 배포:** `nohup`을 활용하여 SSH 접속이 끊겨도 서버가 계속 동작하도록 설정했습니다.
 
-## 🏗️ 시스템 아키텍처 (Layered Architecture)
+## 4. 🚀 아키텍처 및 배포 구조
+* **Local (Mac M2):** IntelliJ IDEA + MySQL 개발 환경
+* **Server (Raspberry Pi 4):** Linux 환경에 Java와 MariaDB를 직접 설치하고, 빌드된 JAR 파일을 전송하여 구동.
 
-프로젝트는 유지보수성과 확장성을 위해 계층형 아키텍처를 기반으로 설계되었습니다.
+## 5. 📸 실행 화면
+![1 메인화면.png](../../1%20%EB%A9%94%EC%9D%B8%ED%99%94%EB%A9%B4.png)
+![2 상세화면.png](../../2%20%EC%83%81%EC%84%B8%ED%99%94%EB%A9%B4.png)
+![3 수정화면.png](../../3%20%EC%88%98%EC%A0%95%ED%99%94%EB%A9%B4.png)
 
-- **Controller Layer:** HTTP 요청/응답 처리 (API 인터페이스)
-- **Service Layer:** 핵심 비즈니스 로직 처리 (4주차 구현 완료)
-- **Repository Layer:** DB 접근 및 CRUD 작업 수행 (3주차 구현 완료)
-- **Domain & DTO:** 데이터 모델 및 데이터 전송 객체 (3, 4주차 구현 완료)
+## 6. 🔥 트러블 슈팅 & 배운 점 (Retrospective)
 
-## 🗺️ 개발 로드맵 및 현재 상태
+### 1) H2에서 MySQL로의 전환
+* **문제:** 초기에는 인메모리 DB인 H2를 사용하여 서버 재시작 시 데이터가 휘발되는 문제가 있었음.
+* **해결:** `application.properties` 설정을 변경하고 로컬 및 서버에 MySQL(MariaDB)을 구축하여 영구 저장소로 전환함. `ddl-auto` 옵션을 `update`로 설정하여 데이터 보존성을 확보함.
 
-| **주차** | **주요 목표** | **진행 상태** | **커밋 메시지** |
-| --- | --- | --- | --- |
-| **1주차** | Spring Boot 환경 설정 및 프로젝트 초기화 | ✅ 완료 | `feat: Initial Spring Boot project setup and configuration` |
-| **2주차** | Git/GitHub 버전 관리 시스템 구축 | ✅ 완료 | `docs: Add README and set up Git workflow` |
-| **3주차** | JPA Entity 및 Repository 구현 (DB 기반 마련) | ✅ 완료 | `feat: Configure H2 Database and Implement Meal Entity and Repository` |
-| **4주차** | **DTO 및 Service 계층 구현 (비즈니스 로직 완성)** | ✅ 완료 | `feat: Implement MealService with CRUD logic and DTOs` |
-| **5주차** | Controller 계층 구현 및 REST API 완성 | 🔜 진행 예정 | - |
-| **6주차** | Thymeleaf 연동 (최초 View 화면 구성) | 🔜 진행 예정 | - |
-| **7주차 이후** | 유효성 검사, 예외 처리, 테스트 코드 작성 등 | 🔜 진행 예정 | - |
+### 2) 라즈베리파이 배포와 Jar 파일 문제
+* **문제:** `scp`로 빌드 파일을 전송했으나 `Invalid or corrupt jarfile` 에러가 발생함.
+* **원인:** `build/libs` 내에 라이브러리가 포함되지 않은 `plain.jar`(19KB)가 전송되었거나, 와일드카드(`*`) 사용으로 잘못된 파일이 실행됨.
+* **해결:** `bootJar`로 생성된 50MB 이상의 Fat Jar 파일을 명시적으로 지정하여 전송함으로써 해결.
 
-## 🚀 로컬 환경 실행 가이드
+### 3) 백그라운드 실행
+* **학습:** 터미널 종료 시 서버가 꺼지는 현상을 막기 위해 `nohup` 명령어와 `&` (백그라운드 연산자)를 사용하여 데몬 형태로 서버를 띄우는 법을 익힘.
 
-### ⚙️ 실행 요구사항
-
-- Java JDK 17+
-- Git
-- IntelliJ IDEA (권장)
-
-### 1. 프로젝트 클론
-
-```
-git clone [본인 GitHub 저장소 URL]
-cd mealsevices
-
-```
-
-### 2. 애플리케이션 실행
-
-IntelliJ IDEA에서 프로젝트를 열고 `MealSevicesApplication.java`의 `main` 메서드를 실행합니다.
-
-혹은 터미널에서 다음 명령어를 사용합니다.
-
-```
-./gradlew bootRun
-
-```
-
-### 3. DB 콘솔 접속 확인
-
-서버 구동 후, 브라우저에서 H2 콘솔에 접속하여 테이블 생성 여부를 확인할 수 있습니다.
-
-| **항목** | **값** |
-| --- | --- |
-| **H2 Console URL** | `http://localhost:8080/h2-console` |
-| **JDBC URL** | `jdbc:h2:mem:mealdb` |
-| **User Name** | `sa` |
+---
+*Developed by vyjsjs* 

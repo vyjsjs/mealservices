@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>식사 상세 정보</title>
+</head>
+<body>
+<h1>🍽️ 식사 상세 정보</h1>
+
+<div>
+    <label><strong>ID:</strong></label>
+    <span th:text="${meal.id}">1</span>
+</div>
+<div>
+    <label><strong>날짜:</strong></label>
+    <span th:text="${meal.mealDate}">2023-11-27</span>
+</div>
+<div>
+    <label><strong>구분:</strong></label>
+    <span th:text="${meal.mealName}">점심</span>
+</div>
+<div>
+    <label><strong>메뉴 설명:</strong></label>
+    <p th:text="${meal.menuDescription}">닭가슴살 샐러드</p>
+</div>
+<div>
+    <label><strong>칼로리:</strong></label>
+    <span th:text="${meal.calories}">500</span> kcal
+</div>
+<div>
+    <label><strong>생성일:</strong></label>
+    <span th:text="${meal.createdAt}">2023-11-27T10:00:00</span>
+</div>
+
+<hr/>
+
+<div style="display: flex; gap: 10px;">
+    <button th:onclick="|location.href='@{/meals/{id}/edit(id=${meal.id})}'|">수정하기</button>
+
+    <form th:action="@{/meals/{id}/delete(id=${meal.id})}" method="post"
+          onsubmit="return confirm('정말 이 식사 기록을 삭제하시겠습니까?');">
+        <button type="submit" style="background-color: #ff4d4d; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+            삭제하기
+        </button>
+    </form>
+
+    <button onclick="location.href='/meals'">목록으로 돌아가기</button>
+</div>
+</body>
+</html>
